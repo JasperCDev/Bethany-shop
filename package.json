@@ -1,0 +1,29 @@
+{
+  "name": "Bethany-shop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JasperC1999/Bethany-shop.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JasperC1999/Bethany-shop/issues"
+  },
+  "homepage": "https://github.com/JasperC1999/Bethany-shop#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.7",
+    "@types/node": "^14.0.26",
+    "ts-node": "^8.10.2"
+  },
+  "dependencies": {
+    "typescript": "^3.9.7",
+    "express": "^4.17.1"
+  }
+}

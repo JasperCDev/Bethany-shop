@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { ProductListing } from './productListing';
-import { Product } from './app';
+import { Product } from './interfaces';
+import { allListings } from './listingContext';
 
 interface Props {
   products: Array<Product>;
@@ -9,8 +10,7 @@ interface Props {
 export const ProductList: React.FC<Props> = ({ products }) => {
   return (
     <div className="product-list">
-      {products.map((product: Product) => <ProductListing product={product}/>)}
-
+      {products.map((product: Product) => <ProductListing product={product} key={product.id}/>)}
     </div>
   );
 }

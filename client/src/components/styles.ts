@@ -1,30 +1,29 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  width: 100vw;
-  height: 100%;
-  background: url(bethany-floral.png);
-
-}
-
-#root {
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-  /* display: flex;
-  /* align-items: center; */
-  /* justify-content: center; */
-}
+import styled, { createGlobalStyle } from 'styled-components';
 
 
+export const GlobalStyle = createGlobalStyle`
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-.header {
+  body {
+    width: 100vw;
+    height: 100%;
+    background: #e3f8ff;
 
-  background-color: #c9625f;
+  }
+
+  #root {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+  }
+`;
+
+export const Header = styled.div`
+  background-color: #bbeafa;
   height: 9%;
   border-bottom: 2px solid black;
   display: flex;
@@ -32,13 +31,9 @@ body {
   align-items: left;
   flex-direction: row;
   overflow: hidden;
-}
+`;
 
-/* .main-logo {
-
-} */
-
-.title {
+export const Title = styled.div`
   font-size: 3em;
   font-family: Georgia, 'Times New Roman', Times, serif;
   padding-left: 20px;
@@ -46,19 +41,21 @@ body {
   font-style: italic;
   padding: 0 auto;
   font-weight: bold;
-  -webkit-text-fill-color: blueviolet;
+  -webkit-text-fill-color: #2776f5;
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: black;
-}
+`;
 
-.subtitle {
+
+
+export const Subtitle = styled.div`
   font-size: 1em;
   padding-top: 0.3em;
   font-style: italic;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: black;
   padding-left: 20px;
-}
+`;
 
 /* .searchForm {
   justify-self: flex-end;
@@ -69,38 +66,42 @@ body {
   height: 10em;
 } */
 
-.shopping-cart-button {
+export const ShoppingCartButton = styled.button`
   margin: auto;
   margin-left: 35em;
   font-size: 1.3em;
   width: 12em;
   height: 2em;
-}
+`;
 
-.shopping-cart-link {
+export const ShoppingCartLink = styled.div`
   margin: auto;
   padding: 0.5em;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
-}
+`;
 
-.shopping-cart-text {
+
+
+export const ShoppingCartText = styled.p`
   padding-right: 1em;
-}
+`;
 
-.about-button {
+
+export const AboutButton = styled.button`
   margin: auto;
   font-size: 1.5em;
   width: 12em;
-}
+`;
 
-.about-link {
-  margin: auto;
-}
 
-.product-list {
+export const AboutLink = styled.div`
+   margin: auto;
+`;
+
+export const ProductListDiv = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
@@ -109,40 +110,42 @@ body {
   margin: auto;
   overflow: hidden;
   white-space: nowrap;
-  z-index: 5;
-  background-color: seashell;
-}
+`;
 
-.product {
+
+
+export const ProductDiv = styled.div`
   padding: 20px 10px;
   margin: auto;
   overflow: hidden;
   white-space: nowrap;
   width: 18em;
-}
+`;
 
-.product-title {
+
+
+export const ProductTitle = styled.h3`
   padding-bottom: 5px;
-}
+`;
 
-.product-img-container {
+export const ProductImgContainer = styled.div`
   overflow: hidden;
   width: 250px;
   border: 1px solid black;
-}
+`;
 
-.product-img {
+
+export const ProductImg = styled.img`
   transition: transform .2s ease;
-}
+  hover: {
+    transform: scale(1.5);
+    cursor: pointer;
+  }
+`;
 
-.product-img:hover {
-  transform: scale(1.5);
-  cursor: pointer;
-}
-
-.product-description {
-  overflow:hidden;
+export const ProductDescription = styled.h3`
+    overflow:hidden;
   white-space:nowrap;
   text-overflow: ellipsis;
   font-weight: 100;
-}
+`;

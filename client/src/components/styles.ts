@@ -101,7 +101,7 @@ export const ProductListDiv = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   padding-top: 3em;
-  width: 55vw;
+  width: 45vw;
   margin: auto;
   overflow: hidden;
   white-space: nowrap;
@@ -112,16 +112,17 @@ export const ProductDiv = styled.div`
   margin: auto;
   overflow: hidden;
   white-space: nowrap;
-  width: 18em;
+  width: 190px;
 `;
 
 export const ProductTitle = styled.h3`
-  padding-bottom: 5px;
+  /* padding-bottom: 0.3rem; */
+  font-size: 1.2rem;
 `;
 
 export const ProductImgContainer = styled.div`
   overflow: hidden;
-  width: 250px;
+  width: 180px;
   border: 1px solid black;
 `;
 
@@ -138,27 +139,14 @@ export const ProductDescription = styled.h3`
   white-space: nowrap;
   text-overflow: ellipsis;
   font-weight: 100;
+  font-size: 1rem;
 `;
 
-// product page
-
-export const ProductPageMain = styled.div`
+export const FooterSection = styled.footer`
   display: flex;
-  width: 80vw;
-  height: 80vh;
   flex-direction: row;
-  margin: auto;
-  border: 1px solid black;
+  background-color: #bbeafa;
+  padding: 20px;
+  border-top: 1px solid black;
 `;
 
-export const Preview = styled.div`
-  width: 500px;
-  height: 600px;
-  border: 1px solid black;
-`;
-
-export const Purchasing = styled.div`
-  width: 500px;
-  height: 600px;
-  border: 1px solid black;
-`;

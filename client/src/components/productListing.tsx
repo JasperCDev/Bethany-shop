@@ -8,14 +8,14 @@ interface Props {
 
 export const ProductListing: React.FC<Props> = ({ product }) => {
   return (
-    <Link to={`/listing/${product.id}`} >
+    <Link to={`/listing/${product.id}`} style={{textDecoration: 'none', color: 'black'}}>
       <ProductDiv>
         <ProductImgContainer>
-          <ProductImg src={product.imageMainUrl} width="250" height="275" />
+          <ProductImg src={product.imageMainUrl} width="190" height="220" />
         </ProductImgContainer>
         <ProductTitle>{product.title}</ProductTitle>
         <ProductDescription >{product.description}</ProductDescription>
-        <h2>${product.price.toString()}</h2>
+        <h3>${product.price.toString()}</h3>
       </ProductDiv>
     </Link>
 

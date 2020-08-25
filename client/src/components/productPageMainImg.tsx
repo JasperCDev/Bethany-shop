@@ -15,13 +15,13 @@ const OverflowContainer = styled.div`
 const ImgContainer = styled.div.attrs((props) => {
 })`
   background-repeat: no-repeat;
-  width: 350px;
+  width: 378px;
   height: 415px;
   background-image: ${(props) => 'url(' + props['data-url'] + ')'};
   background-size: contain;
   cursor: pointer;
-  background-position-x: ${(props) => (props['data-x-position'] && props['data-x-position'] - (350 / 2)) + 'px'};
-  background-position-y: ${(props) => (props['data-x-position'] && props['data-y-position'] - (415 / 2)) + 'px'};
+  background-position-x: ${(props) => (props['data-x-position'] && props['data-x-position'] - (378 / 2)) + 'px'};
+  background-position-y: ${(props) => (props['data-x-position'] && props['data-y-position'] - (672 / 2)) + 'px'};
   &:hover {
     transform: scale(2);
   }
@@ -33,17 +33,16 @@ export const ProductPageMainImg: React.FC<Props> = ({ url }) => {
   const [YPosition, setYPosition] = useState<number>(0);
 
   const animateOnMouseMove: MouseEventHandler = (e) => {
-    let lastAnimationTime = Date.now();
+    let animationCount = 0;
+    let animationStart = Date.now();
     return (event: typeof e) => {
-      const currentTime = Date.now();
-      const timePassedSinceLastExecution = currentTime - lastAnimationTime;
-      if (timePassedSinceLastExecution >= 10) {
-        console.log('ran!');
-        lastAnimationTime = currentTime;
+      animationCount++;
+      let newAnimationStart = Date.now();
+      let timeSinceLastAnimation = newAnimationStart - animationStart;
+      if (animationCount % 5 === 0 || timeSinceLastAnimation >= 5) {
         setXPosition(event.nativeEvent.offsetX);
         setYPosition(event.nativeEvent.offsetY);
-      } else {
-        console.log('thrown out!');
+        animationStart = newAnimationStart;
       }
     }
   };

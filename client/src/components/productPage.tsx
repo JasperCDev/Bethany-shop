@@ -6,6 +6,7 @@ import { dummyProducts } from '../../dummyProducts';
 import { MainHeader } from './mainHeader';
 import styled from 'styled-components';
 import { ProductPageMainImg } from './productPageMainImg';
+import { ProductPageImagesList } from './productPageImagesList'
 
 const ProductPageMain = styled.div`
   display: flex;
@@ -15,20 +16,21 @@ const ProductPageMain = styled.div`
   align-items: center;
   justify-content: center;
   margin: auto;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   padding: 20px;
 `;
 
 const Preview = styled.div`
   width: 500px;
   height: 600px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  display: flex;
 `;
 
 const Purchasing = styled.div`
   width: 500px;
   height: 600px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   padding: 20px;
 `;
 
@@ -60,11 +62,19 @@ interface Props {
 
 export const ProductPage: React.FC<Props> = ({ match: {params: { id }} }) => {
   const [product, setProduct] = useState<Product>();
+  const [featuredImg, setFeaturedImg] = useState<string>();
+
+  const imgMouseOverHandler = (e: Event) => {
+    const element = e.target as HTMLImageElement;
+    const url = element.src;
+    setFeaturedImg(url);
+  }
 
   useEffect(() => {
     for (let listing of dummyProducts) {
       if (listing.id === Number(id)) {
         setProduct(listing);
+        break;
       }
     }
   }, []);
@@ -78,7 +88,8 @@ export const ProductPage: React.FC<Props> = ({ match: {params: { id }} }) => {
         <MainHeader />
         <ProductPageMain>
           <Preview>
-            <ProductPageMainImg url={product!.imageMainUrl} />
+            <ProductPageImagesList imgMouseOverHandler={imgMouseOverHandler} images={product.images} featuredImg={featuredImg || product.imageMainUrl} />
+            <ProductPageMainImg url={featuredImg || product.imageMainUrl} />
           </Preview>
           <Purchasing>
             <ProductTitle>{product.title}</ProductTitle>

@@ -1,4 +1,7 @@
 import styled, { createGlobalStyle } from 'styled-components';
+import { MainBackgroundColor, MainHeaderBackgroundColor, MainTitleColor } from './styleVariables';
+
+
 
 
 export const GlobalStyle = createGlobalStyle`
@@ -11,7 +14,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     width: 100vw;
     height: 100%;
-    background: #e3f8ff;
+
 
   }
 
@@ -19,11 +22,12 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
     overflow-x: hidden;
+    background: ${MainBackgroundColor};
   }
 `;
 
 export const Header = styled.div`
-  background-color: #bbeafa;
+  background-color: ${MainHeaderBackgroundColor};
   height: 9%;
   border-bottom: 2px solid black;
   display: flex;
@@ -41,7 +45,7 @@ export const Title = styled.div`
   font-style: italic;
   padding: 0 auto;
   font-weight: bold;
-  -webkit-text-fill-color: #2776f5;
+  -webkit-text-fill-color: ${MainTitleColor};
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
 `;

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { MainTitleColor } from '../styleVariables';
 
 export const ProductPageMain = styled.div`
   display: flex;
@@ -8,7 +9,7 @@ export const ProductPageMain = styled.div`
   align-items: center;
   justify-content: center;
   margin: auto;
-  padding: 20px;
+  padding: 30px;
 `;
 
 export const Preview = styled.div`
@@ -30,9 +31,9 @@ export const AddToCartButton = styled.button`
   width: 80%;
   height: 4rem;
   font-size: 1.5rem;
-  background-color: orange;
+  background-color: #5a93e8;
   &:hover {
-    background-color: darkorange;
+    background-color: #2d75e0;
   }
 `;
 
@@ -62,7 +63,8 @@ export const CarouselButton = styled.button.attrs((props: {
   height: 2.5rem;
   width: 2.5rem;
   line-height: 2.5rem;
-  visibility: ${({ isHovered }) => isHovered ? 'visible' : 'hidden'};
+  opacity: ${({ isHovered }) => isHovered ? '1' : '0'};
+  transition: all .5s ease-in-out;
 `;
 
 export const ImageListContainer = styled.div`
@@ -72,19 +74,21 @@ export const ImageListContainer = styled.div`
   align-items: flex-start;
   justify-content: top;
   flex-direction: column;
+  position: relative;
+
 `;
 
-export const ImageList = styled.div`
+export const ImageList = styled.div.attrs((props) => {})`
   display: flex;
   align-items: flex-start;
   justify-content: top;
   flex-direction: column;
   padding: 0px 10px;
-  height: 515px;
+  height: 619px;
   overflow: hidden;
   position: relative;
-  margin-top: -100px;
-  position: relative;
+  margin-top: ${(props) => props['data-margin-top'] + 'px'};
+  transition: all ${(props) => props['data-should-animate'] ? '.4s' : '0s'} ease-in;
 `;
 
 export const Img = styled.img.attrs((props: {
@@ -93,13 +97,11 @@ export const Img = styled.img.attrs((props: {
   'data-translate-px': number;
 }) => { })`
   margin: 10px 0px;
-  width: ${({ featured }) => featured ? '61' : '59'};
-  height: ${({ featured }) => featured ? '84' : '82'};
+  width: 59;
+  height: 82;
   cursor: pointer;
   border: ${({ featured }) => featured ? '1px solid black' : 'none'};
-  transform: ${(props) => 'translateY(' + props['data-translate-px'] + 'px)'};
-  transition: transform .5s ease-in-out;
-
+  position: relative;
 `;
 
 // Product Page Main Img

@@ -21,7 +21,7 @@ interface Props {
 export const ProductPage: React.FC<Props> = ({ match: {params: { id }} }) => {
   const [product, setProduct] = useState<Product>();
   const [featuredImg, setFeaturedImg] = useState<string>();
-  const [fullFeaturedImgIndex, setFullFeaturedIndex] = useState<number>(0);
+  const [fullFeaturedImgIndex, setFullFeaturedImgIndex] = useState<number>(0);
 
   const imgMouseOverHandler: MouseEventHandler = (e) => {
     const element = e.target;
@@ -34,7 +34,7 @@ export const ProductPage: React.FC<Props> = ({ match: {params: { id }} }) => {
   }
 
   const imgClickHandler = (index: number, url: string) => {
-    setFullFeaturedIndex(index);
+    setFullFeaturedImgIndex(index);
     setFeaturedImg(url);
   }
 
@@ -56,7 +56,16 @@ export const ProductPage: React.FC<Props> = ({ match: {params: { id }} }) => {
         <MainHeader />
         <ProductPageMain>
           <Preview>
-            <ProductPageImagesList imgClickHandler={imgClickHandler} imgMouseOutHandler={imgMouseOutHandler} imgMouseOverHandler={imgMouseOverHandler} images={product.images} featuredImg={featuredImg || product.imageMainUrl} fullFeaturedImgIndex={fullFeaturedImgIndex}/>
+            <ProductPageImagesList
+              imgClickHandler={imgClickHandler}
+              imgMouseOutHandler={imgMouseOutHandler}
+              imgMouseOverHandler={imgMouseOverHandler}
+              images={product.images}
+              featuredImg={featuredImg || product.imageMainUrl}
+              fullFeaturedImgIndex={fullFeaturedImgIndex}
+              setFullFeaturedImgIndex={setFullFeaturedImgIndex}
+              setFeaturedImg={setFeaturedImg}
+            />
             <ProductPageMainImg url={featuredImg || product.imageMainUrl} />
           </Preview>
           <Purchasing>

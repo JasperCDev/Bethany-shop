@@ -84,11 +84,11 @@ export const ImageList = styled.div.attrs((props) => {})`
   justify-content: top;
   flex-direction: column;
   padding: 0px 10px;
-  height: 619px;
+  height: 721px;
   overflow: hidden;
   position: relative;
   margin-top: ${(props) => props['data-margin-top'] + 'px'};
-  transition: all ${(props) => props['data-should-animate'] ? '.4s' : '0s'} ease-in;
+  transition: all ${(props) => props['data-should-animate'] ? '.5s' : '0s'} ease-in;
 `;
 
 export const Img = styled.img.attrs((props: {
@@ -97,8 +97,8 @@ export const Img = styled.img.attrs((props: {
   'data-translate-px': number;
 }) => { })`
   margin: 10px 0px;
-  width: 59;
-  height: 82;
+  width: ${({ featured }) => featured ? '61px' : '59px'};
+  height: ${({ featured }) => featured ? '84px' : '82px'};
   cursor: pointer;
   border: ${({ featured }) => featured ? '1px solid black' : 'none'};
   position: relative;
@@ -108,20 +108,21 @@ export const Img = styled.img.attrs((props: {
 
 export const OverflowContainer = styled.div`
   overflow: hidden;
-  width: 350px;
+  width: 345px;
   height: 415px;
 `;
 
 export const ImgContainer = styled.div.attrs((props) => {
 })`
   background-repeat: no-repeat;
-  width: 378px;
+  width: 345px;
   height: 415px;
   background-image: ${(props) => 'url(' + props['data-url'] + ')'};
   background-size: contain;
   cursor: pointer;
   background-position-x: ${(props) => (props['data-x-position'] && props['data-x-position'] - (378 / 2)) + 'px'};
   background-position-y: ${(props) => (props['data-x-position'] && props['data-y-position'] - (415 / 2)) + 'px'};
+  transition: background-image .5s ease-in-out;
   &:hover {
     transform: scale(2);
   }

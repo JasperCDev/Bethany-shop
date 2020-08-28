@@ -8,14 +8,37 @@ interface Props {
   imgMouseOutHandler: () => void;
   fullFeaturedImgIndex: number;
   imgClickHandler: (index: number, url: string) => void;
+  setFullFeaturedImgIndex: React.Dispatch<React.SetStateAction<number>>;
+  setFeaturedImg: React.Dispatch<React.SetStateAction<string | undefined>>;
 }
 
-export const ProductPageImagesList: React.FC<Props> = ({ images, imgMouseOverHandler, featuredImg, imgMouseOutHandler, fullFeaturedImgIndex, imgClickHandler }) => {
+export const ProductPageImagesList: React.FC<Props> = ({
+  images,
+  imgMouseOverHandler,
+  featuredImg,
+  imgMouseOutHandler,
+  fullFeaturedImgIndex,
+  imgClickHandler,
+  setFullFeaturedImgIndex,
+  setFeaturedImg,
+}) => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
-  const [currentImagesList, setCurrentImagesList] = useState<Array<string>>(images);
+  const [currentImagesList, setCurrentImagesList] = useState<Array<string>>([]);
   const [imageListMarginTop, setImageListMarginTop] = useState<number>(0);
   const [shouldAnimate, setShouldAnimate] = useState<boolean>(false);
 
+  const currentImagesListRef = useRef<typeof currentImagesList>([]);
+  currentImagesListRef.current = currentImagesList;
+
+  useEffect(() => {
+    const copy = images.slice(0);
+    copy.push(copy[0]);
+    setCurrentImagesList(copy);
+  }, [])
+
+  useEffect(() => {
+    if (fullFeaturedImgIndex !== 0) slideUp(fullFeaturedImgIndex);
+  }, [fullFeaturedImgIndex]);
 
   const containerMouseEventHandler: MouseEventHandler = () => {
     setIsHovered(!isHovered);
@@ -26,7 +49,6 @@ export const ProductPageImagesList: React.FC<Props> = ({ images, imgMouseOverHan
     return () => {
       const now = Date.now();
       const timeSincelastAnimation = now - lastClickStartTime;
-      console.log(timeSincelastAnimation);
       if (timeSincelastAnimation < 150) {
         return;
       };
@@ -48,41 +70,49 @@ export const ProductPageImagesList: React.FC<Props> = ({ images, imgMouseOverHan
     }
   }
 
-  const slideUp = () => {
-    const copy = formatListForSlideUp();
+  const slideUp = (iterationCount = 1) => {
+    const currentImagesListCopy = formatListForSlideUp(iterationCount);
     setShouldAnimate(true);
-    setImageListMarginTop(-102);
+    setImageListMarginTop(-102 * iterationCount);
     setTimeout(() => {
       setShouldAnimate(false);
       setImageListMarginTop(0);
-      setCurrentImagesList(copy);
-    }, 520);
+      setCurrentImagesList(currentImagesListCopy!);
+      setFeaturedImg(currentImagesListCopy![0]);
+      setFullFeaturedImgIndex(0);
+    }, 510);
   }
 
   const slideDown = () => {
     setShouldAnimate(false);
     setImageListMarginTop(-102);
-    setCurrentImagesList(formatListForSlideDown());
+    const currentImagesListCopy = formatListForSlideDown();
+    setCurrentImagesList(currentImagesListCopy);
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         setShouldAnimate(true);
         setImageListMarginTop(0);
+        setFeaturedImg(currentImagesListCopy![0]);
       });
     });
   }
 
-  const formatListForSlideUp = () => {
-    const copy = currentImagesList.slice(0);
-    const shifted = copy.shift();
-    copy.push(shifted!);
-    return copy;
+  const formatListForSlideUp = (iterationCount = 1) => {
+    const currentImagesListCopy = currentImagesListRef.current.slice(0);
+    currentImagesListCopy.shift();
+    for (let i = 1; i < iterationCount; i++) {
+      let shifted = currentImagesListCopy.shift();
+      currentImagesListCopy.push(shifted);
+    }
+    currentImagesListCopy.push(currentImagesListCopy[0]);
+    return currentImagesListCopy;
   }
 
   const formatListForSlideDown = () => {
-    const copy = currentImagesList.slice(0);
-    const popped = copy.pop();
-    copy.unshift(popped!);
-    return copy;
+    const currentImagesListCopy = currentImagesList.slice(0);
+    const popped = currentImagesListCopy.pop();
+    currentImagesListCopy.unshift(popped!);
+    return currentImagesListCopy;
   }
 
   const handleUpButtonClick = handleSlideDownAnimation();
@@ -130,6 +160,13 @@ export const ProductPageImagesList: React.FC<Props> = ({ images, imgMouseOverHan
             onMouseOver={imgMouseOverHandler}
             onMouseOut={imgMouseOutHandler}
             onClick={() => imgClickHandler(4, currentImagesList[4])}
+          />
+          <Img
+            src={currentImagesList[5]}
+            featured={fullFeaturedImgIndex === 5}
+            onMouseOver={imgMouseOverHandler}
+            onMouseOut={imgMouseOutHandler}
+            onClick={() => imgClickHandler(5, currentImagesList[5])}
           />
       </ImageList>
       </ImageListContainer>

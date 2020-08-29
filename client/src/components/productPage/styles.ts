@@ -1,39 +1,51 @@
 import styled from 'styled-components';
-import { MainTitleColor } from '../styleVariables';
+import { LightBlue, DarkBlue, LighterPink, MainPink, DarkPink } from '../styleVariables';
 
 export const ProductPageMain = styled.div`
   display: flex;
-  width: 90%;
-  height: 90%;
+  /* width: 50%;
+  height: 75%; */
   flex-direction: row;
   align-items: center;
   justify-content: center;
   margin: auto;
-  padding: 30px;
+  /* display: block; */
+  position: static;
+  padding-top: 10vh;
 `;
 
 export const Preview = styled.div`
-  width: 500px;
-  height: 600px;
+  width: 400px;
+  height: 500px;
   display: flex;
 `;
 
 export const Purchasing = styled.div`
-  width: 500px;
-  height: 600px;
+  width: 30vw;
+  height: 500px;
   padding: 20px;
+  margin-left: 3vw;
 `;
 
 
 export const AddToCartButton = styled.button`
-  margin-top: 20rem;
+  margin-top: 15rem;
   display: block;
   width: 80%;
   height: 4rem;
   font-size: 1.5rem;
-  background-color: #5a93e8;
+  background-color: ${LightBlue};
+  border: 1px solid black;
+  outline: none;
+  transition: all .2s ease-in-out;
   &:hover {
-    background-color: #2d75e0;
+    background-color: #0076b5;
+    transform: scale(1.2);
+  }
+  &:active {
+    letter-spacing: 1.5;
+    background-color: ${DarkBlue};
+    color: ${LighterPink};
   }
 `;
 
@@ -46,25 +58,42 @@ export const ProductTitle = styled.h1`
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: -2.5rem;
+  margin-top: -72px;
   align-items: center;
+  height: 628px;
 `;
+
+export const CarouselSVG = styled.svg``;
 
 export const CarouselButton = styled.button.attrs((props: {
   isHovered: boolean;
 }) => { })`
   background: none;
-	border: none;
+	border: 1px solid grey;
+  border-radius: 50%;
 	cursor: pointer;
 	outline: none;
   font-weight: 500;
   font-size: 2.5rem;
-  border: none;
   height: 2.5rem;
   width: 2.5rem;
   line-height: 2.5rem;
   opacity: ${({ isHovered }) => isHovered ? '1' : '0'};
-  transition: all .5s ease-in-out;
+  transition: all .3s ease-in-out;
+  margin: 1rem 0rem;
+  &:hover {
+
+    transform: scale(1.2);
+    border-width: 1.5px;
+
+  }
+  &:active {
+    background-color: ${MainPink};
+    transform: scale(1.4);
+  }
+  &:active ${CarouselSVG} {
+    fill: ${LighterPink};
+  }
 `;
 
 export const ImageListContainer = styled.div`
@@ -75,7 +104,6 @@ export const ImageListContainer = styled.div`
   justify-content: top;
   flex-direction: column;
   position: relative;
-
 `;
 
 export const ImageList = styled.div.attrs((props) => {})`
@@ -88,7 +116,7 @@ export const ImageList = styled.div.attrs((props) => {})`
   overflow: hidden;
   position: relative;
   margin-top: ${(props) => props['data-margin-top'] + 'px'};
-  transition: all ${(props) => props['data-should-animate'] ? '.5s' : '0s'} ease-in;
+  transition: all ${(props) => props['data-should-animate'] ? '0.5s' : '0s'} ease-in;
 `;
 
 export const Img = styled.img.attrs((props: {
@@ -108,21 +136,21 @@ export const Img = styled.img.attrs((props: {
 
 export const OverflowContainer = styled.div`
   overflow: hidden;
-  width: 345px;
-  height: 415px;
+  width: 340px;
+  height: 408px;
 `;
 
 export const ImgContainer = styled.div.attrs((props) => {
 })`
   background-repeat: no-repeat;
-  width: 345px;
-  height: 415px;
+  width: 340px;
+  height: 408px;
   background-image: ${(props) => 'url(' + props['data-url'] + ')'};
   background-size: contain;
   cursor: pointer;
   background-position-x: ${(props) => (props['data-x-position'] && props['data-x-position'] - (378 / 2)) + 'px'};
   background-position-y: ${(props) => (props['data-x-position'] && props['data-y-position'] - (415 / 2)) + 'px'};
-  transition: background-image .5s ease-in-out;
+  transition: background-image .3s ease-in;
   &:hover {
     transform: scale(2);
   }

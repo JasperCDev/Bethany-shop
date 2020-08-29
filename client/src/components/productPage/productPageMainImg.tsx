@@ -7,8 +7,6 @@ interface Props {
 }
 
 
-
-
 export const ProductPageMainImg: React.FC<Props> = ({ url }) => {
   const [XPosition, setXPosition] = useState<number>(0);
   const [YPosition, setYPosition] = useState<number>(0);

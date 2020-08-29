@@ -1,11 +1,11 @@
 import React, { useState, MouseEventHandler, useEffect, useRef } from 'react';
-import { Container, CarouselButton, ImageList, Img, ImageListContainer} from './styles';
+import { Container, CarouselButton, ImageList, Img, ImageListContainer, CarouselSVG} from './styles';
 
 interface Props {
   images: Array<string>;
   imgMouseOverHandler: MouseEventHandler;
   featuredImg: string;
-  imgMouseOutHandler: () => void;
+  imgListMouseLeaveHandler: (url: string) => void;
   fullFeaturedImgIndex: number;
   imgClickHandler: (index: number, url: string) => void;
   setFullFeaturedImgIndex: React.Dispatch<React.SetStateAction<number>>;
@@ -16,7 +16,7 @@ export const ProductPageImagesList: React.FC<Props> = ({
   images,
   imgMouseOverHandler,
   featuredImg,
-  imgMouseOutHandler,
+  imgListMouseLeaveHandler,
   fullFeaturedImgIndex,
   imgClickHandler,
   setFullFeaturedImgIndex,
@@ -93,6 +93,7 @@ export const ProductPageImagesList: React.FC<Props> = ({
         setShouldAnimate(true);
         setImageListMarginTop(0);
         setFeaturedImg(currentImagesListCopy![0]);
+        setFullFeaturedImgIndex(0);
       });
     });
   }
@@ -102,7 +103,7 @@ export const ProductPageImagesList: React.FC<Props> = ({
     currentImagesListCopy.shift();
     for (let i = 1; i < iterationCount; i++) {
       let shifted = currentImagesListCopy.shift();
-      currentImagesListCopy.push(shifted);
+      currentImagesListCopy.push(shifted!);
     }
     currentImagesListCopy.push(currentImagesListCopy[0]);
     return currentImagesListCopy;
@@ -110,70 +111,66 @@ export const ProductPageImagesList: React.FC<Props> = ({
 
   const formatListForSlideDown = () => {
     const currentImagesListCopy = currentImagesList.slice(0);
-    const popped = currentImagesListCopy.pop();
-    currentImagesListCopy.unshift(popped!);
+    currentImagesListCopy.pop();
+    currentImagesListCopy.unshift(currentImagesListCopy[currentImagesListCopy.length - 2]);
     return currentImagesListCopy;
   }
 
   const handleUpButtonClick = handleSlideDownAnimation();
   const handleDownButtonClick = handleSlideUpAnimation();
 
+  const firstUrl = currentImagesList[0];
   return (
-    <Container onMouseOver={containerMouseEventHandler } onMouseOut={containerMouseEventHandler}>
+    <Container onMouseOver={containerMouseEventHandler } onMouseOut={containerMouseEventHandler} >
       <CarouselButton isHovered={isHovered} onClick={handleUpButtonClick}>
-        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+        <CarouselSVG width="24" height="24" xmlns="http://www.w3.org/2000/CarouselSVG" fill-rule="evenodd" clip-rule="evenodd">
           <path d="M23.245 20l-11.245-14.374-11.219 14.374-.781-.619 12-15.381 12 15.391-.755.609z" />
-        </svg>
+        </CarouselSVG>
       </CarouselButton>
       <ImageListContainer >
-      <ImageList data-margin-top={imageListMarginTop} data-should-animate={shouldAnimate} >
+        <ImageList data-margin-top={imageListMarginTop} data-should-animate={shouldAnimate} onMouseLeave={() => imgListMouseLeaveHandler(firstUrl)}>
           <Img
-            src={currentImagesList[0]}
+            src={firstUrl}
             featured={fullFeaturedImgIndex === 0}
             onMouseOver={imgMouseOverHandler}
-            onMouseOut={imgMouseOutHandler}
-            onClick={() => imgClickHandler(0, currentImagesList[0])}
+            onClick={() => imgClickHandler(0, firstUrl)}
           />
           <Img
             src={currentImagesList[1]}
             featured={fullFeaturedImgIndex === 1}
             onMouseOver={imgMouseOverHandler}
-            onMouseOut={imgMouseOutHandler}
-            onClick={() => imgClickHandler(1, currentImagesList[1])} />
+            onClick={() => imgClickHandler(1, firstUrl)}
+          />
           <Img
             src={currentImagesList[2]}
             featured={fullFeaturedImgIndex === 2}
             onMouseOver={imgMouseOverHandler}
-            onMouseOut={imgMouseOutHandler}
-            onClick={() => imgClickHandler(2, currentImagesList[2])}
+            onClick={() => imgClickHandler(2, firstUrl)}
           />
           <Img
             src={currentImagesList[3]}
             featured={fullFeaturedImgIndex === 3}
             onMouseOver={imgMouseOverHandler}
-            onMouseOut={imgMouseOutHandler}
-            onClick={() => imgClickHandler(3, currentImagesList[3])}
+            onClick={() => imgClickHandler(3, firstUrl)}
           />
           <Img
             src={currentImagesList[4]}
             featured={fullFeaturedImgIndex === 4}
             onMouseOver={imgMouseOverHandler}
-            onMouseOut={imgMouseOutHandler}
-            onClick={() => imgClickHandler(4, currentImagesList[4])}
+            onClick={() => imgClickHandler(4, firstUrl)}
           />
           <Img
             src={currentImagesList[5]}
             featured={fullFeaturedImgIndex === 5}
             onMouseOver={imgMouseOverHandler}
-            onMouseOut={imgMouseOutHandler}
-            onClick={() => imgClickHandler(5, currentImagesList[5])}
+            onClick={() => imgClickHandler(5, firstUrl)}
           />
       </ImageList>
       </ImageListContainer>
       <CarouselButton isHovered={isHovered} onClick={handleDownButtonClick}>
-        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+        <CarouselSVG width="24" height="24" xmlns="http://www.w3.org/2000/CarouselSVG" fill-rule="evenodd" clip-rule="evenodd">
           <path d="M23.245 4l-11.245 14.374-11.219-14.374-.781.619 12 15.381 12-15.391-.755-.609z" />
-        </svg>
+        </CarouselSVG>
       </CarouselButton>
     </Container>
   );

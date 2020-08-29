@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components';
-import { MainBackgroundColor, MainHeaderBackgroundColor, MainTitleColor } from './styleVariables';
+import { MainBackgroundColor, MainHeaderBackgroundColor, MainTitleColor, LighterPink, BorderColor, MainPink, DarkBlue, DarkPink, } from './styleVariables';
 
 
 
@@ -14,8 +14,6 @@ export const GlobalStyle = createGlobalStyle`
   body {
     width: 100vw;
     height: 100%;
-
-
   }
 
   #root {
@@ -28,8 +26,8 @@ export const GlobalStyle = createGlobalStyle`
 
 export const Header = styled.div`
   background-color: ${MainHeaderBackgroundColor};
-  height: 9%;
-  border-bottom: 2px solid black;
+  height: 9vh;
+  border-bottom: 1px solid grey;
   display: flex;
   justify-content: flex-start;
   align-items: left;
@@ -38,42 +36,48 @@ export const Header = styled.div`
 `;
 
 export const Title = styled.div`
-  font-size: 2em;
+  font-size: 5vh;
   font-family: Georgia, 'Times New Roman', Times, serif;
   padding-left: 20px;
   letter-spacing: 4px;
   font-style: italic;
   padding: 0 auto;
-  font-weight: bold;
+  font-weight: 900;
   -webkit-text-fill-color: ${MainTitleColor};
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: black;
+  -webkit-text-stroke-width: 0.07rem;
+  -webkit-text-stroke-color: ${BorderColor};
+  transition: all .5s ease-in-out;
+  cursor: pointer;
 `;
 
 export const Subtitle = styled.div`
-  font-size: 1em;
-  padding-top: 0.3em;
+  font-size: 1rem;
+  padding-top: 0.2rem;
   font-style: italic;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: black;
+  color: ${BorderColor};
   padding-left: 20px;
 `;
 
-/* .searchForm {
-  justify-self: flex-end;
-  align-self: right;
-  padding-right: 20px;
-  margin: auto;
-  width: 5em;
-  height: 10em;
-} */
-
 export const ShoppingCartButton = styled.button`
   margin: auto;
-  margin-left: 35em;
+  margin-left: auto;
   font-size: 1em;
-  width: 9em;
-  height: 2em;
+  min-width: 9em;
+  min-height: 2em;
+  outline: none;
+  border: 0.5px solid ${BorderColor};
+  background-color: ${LighterPink};
+  transition: all .3s ease-in-out;
+  &:hover {
+    background-color: ${MainPink};
+    transform: scale(1.2);
+  }
+  &:active {
+    background-color: ${DarkPink};
+    color: ${LighterPink};
+    letter-spacing: 1.2;
+  }
 `;
 
 export const ShoppingCartLink = styled.div`
@@ -94,6 +98,20 @@ export const AboutButton = styled.button`
   font-size: 1em;
   width: 9em;
   height: 2em;
+  outline: none;
+  border: 0.5px solid ${BorderColor};
+  background-color: ${LighterPink};
+  transition: all .3s ease-in-out;
+  &:hover {
+    background-color: ${MainPink};
+    transform: scale(1.2);
+  }
+
+  &:active {
+    background-color: ${DarkPink};
+    color: ${LighterPink};
+    letter-spacing: 1.2;
+  }
 `;
 
 export const AboutLink = styled.div`
@@ -127,7 +145,7 @@ export const ProductTitle = styled.h3`
 export const ProductImgContainer = styled.div`
   overflow: hidden;
   width: 180px;
-  border: 1px solid black;
+  border: 1px solid ${BorderColor};
 `;
 
 export const ProductImg = styled.img`
@@ -151,6 +169,6 @@ export const FooterSection = styled.footer`
   flex-direction: row;
   background-color: #bbeafa;
   padding: 20px;
-  border-top: 1px solid black;
+  border-top: 1px solid ${BorderColor};
 `;
 

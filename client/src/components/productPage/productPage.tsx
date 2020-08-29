@@ -29,13 +29,12 @@ export const ProductPage: React.FC<Props> = ({ match: {params: { id }} }) => {
     setFeaturedImg(url);
   }
 
-  const imgMouseOutHandler = () => {
-    setFeaturedImg(product!.images[fullFeaturedImgIndex]);
+  const imgListMouseLeaveHandler = (url: string) => {
+    setFeaturedImg(url);
   }
 
   const imgClickHandler = (index: number, url: string) => {
     setFullFeaturedImgIndex(index);
-    setFeaturedImg(url);
   }
 
   useEffect(() => {
@@ -58,7 +57,7 @@ export const ProductPage: React.FC<Props> = ({ match: {params: { id }} }) => {
           <Preview>
             <ProductPageImagesList
               imgClickHandler={imgClickHandler}
-              imgMouseOutHandler={imgMouseOutHandler}
+              imgListMouseLeaveHandler={imgListMouseLeaveHandler}
               imgMouseOverHandler={imgMouseOverHandler}
               images={product.images}
               featuredImg={featuredImg || product.imageMainUrl}

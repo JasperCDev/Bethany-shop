@@ -18,9 +18,9 @@ export const MainHeader: React.FC = () => {
           <ShoppingCart fontSize="inherit" />
         </ShoppingCartLink>
       </ShoppingCartButton>
-      <AboutButton>
+      {/* <AboutButton>
         <AboutLink>About</AboutLink>
-      </AboutButton>
+      </AboutButton> */}
     </Header>
   )
 }

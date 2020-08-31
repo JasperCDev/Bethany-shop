@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components';
-import { MainBackgroundColor, MainHeaderBackgroundColor, MainTitleColor, LighterPink, BorderColor, MainPink, DarkBlue, DarkPink, } from './styleVariables';
+import { MainBackgroundColor, MainHeaderBackgroundColor, MainTitleColor, LighterPink, BorderColor, MainPink, DarkBlue, DarkPink, FontColor, DarkGrey, } from './styleVariables';
 
 
 
@@ -21,13 +21,14 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%;
     overflow-x: hidden;
     background: ${MainBackgroundColor};
+    color: ${FontColor};
   }
 `;
 
 export const Header = styled.div`
   background-color: ${MainHeaderBackgroundColor};
   height: 9vh;
-  border-bottom: 1px solid grey;
+  border-bottom: 1px solid ${BorderColor};
   display: flex;
   justify-content: flex-start;
   align-items: left;
@@ -42,26 +43,32 @@ export const Title = styled.div`
   letter-spacing: 4px;
   font-style: italic;
   padding: 0 auto;
-  font-weight: 900;
+  font-weight: 1000;
+  letter-spacing: 3;
   -webkit-text-fill-color: ${MainTitleColor};
   -webkit-text-stroke-width: 0.07rem;
   -webkit-text-stroke-color: ${BorderColor};
   transition: all .5s ease-in-out;
+  /* background: linear-gradient(black, darkred);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
   cursor: pointer;
+  &:hover {
+    -webkit-text-fill-color: black;
+  }
 `;
 
 export const Subtitle = styled.div`
-  font-size: 1rem;
+  font-size: 2vh;
   padding-top: 0.2rem;
   font-style: italic;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: ${BorderColor};
   padding-left: 20px;
 `;
 
 export const ShoppingCartButton = styled.button`
   margin: auto;
-  margin-left: auto;
+  margin-right: 15vw;
   font-size: 1em;
   min-width: 9em;
   min-height: 2em;
@@ -69,9 +76,11 @@ export const ShoppingCartButton = styled.button`
   border: 0.5px solid ${BorderColor};
   background-color: ${LighterPink};
   transition: all .3s ease-in-out;
+  color: ${DarkGrey};
   &:hover {
     background-color: ${MainPink};
     transform: scale(1.2);
+    color: black;
   }
   &:active {
     background-color: ${DarkPink};
@@ -102,6 +111,7 @@ export const AboutButton = styled.button`
   border: 0.5px solid ${BorderColor};
   background-color: ${LighterPink};
   transition: all .3s ease-in-out;
+  color: ${DarkGrey};
   &:hover {
     background-color: ${MainPink};
     transform: scale(1.2);
@@ -123,7 +133,7 @@ export const ProductListDiv = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   padding-top: 3em;
-  width: 45vw;
+  width: 40vw;
   margin: auto;
   overflow: hidden;
   white-space: nowrap;
@@ -134,17 +144,17 @@ export const ProductDiv = styled.div`
   margin: auto;
   overflow: hidden;
   white-space: nowrap;
-  width: 190px;
+  width: 175px;
 `;
 
 export const ProductTitle = styled.h3`
   /* padding-bottom: 0.3rem; */
-  font-size: 1.2rem;
+  font-size: 0.9rem;
 `;
 
 export const ProductImgContainer = styled.div`
   overflow: hidden;
-  width: 180px;
+  width: 150px;
   border: 1px solid ${BorderColor};
 `;
 
@@ -161,7 +171,7 @@ export const ProductDescription = styled.h3`
   white-space: nowrap;
   text-overflow: ellipsis;
   font-weight: 100;
-  font-size: 1rem;
+  font-size: 0.6rem;
 `;
 
 export const FooterSection = styled.footer`

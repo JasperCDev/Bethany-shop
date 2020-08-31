@@ -11,11 +11,11 @@ export const ProductListing: React.FC<Props> = ({ product }) => {
     <Link to={`/listing/${product.id}`} style={{textDecoration: 'none', color: 'black'}}>
       <ProductDiv>
         <ProductImgContainer>
-          <ProductImg src={product.imageMainUrl} width="190" height="220" />
+          <ProductImg src={product.imageMainUrl} width="150" height="190" />
         </ProductImgContainer>
         <ProductTitle>{product.title}</ProductTitle>
         <ProductDescription >{product.description}</ProductDescription>
-        <h3>${product.price.toString()}</h3>
+        <h5>${product.price.toString()}</h5>
       </ProductDiv>
     </Link>
 

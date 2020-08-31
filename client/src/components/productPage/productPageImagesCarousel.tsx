@@ -4,7 +4,6 @@ import { Container, CarouselButton, ImageList, Img, ImageListContainer, Carousel
 interface Props {
   images: Array<string>;
   imgMouseOverHandler: MouseEventHandler;
-  featuredImg: string;
   imgListMouseLeaveHandler: (url: string) => void;
   fullFeaturedImgIndex: number;
   imgClickHandler: (index: number, url: string) => void;
@@ -12,10 +11,9 @@ interface Props {
   setFeaturedImg: React.Dispatch<React.SetStateAction<string | undefined>>;
 }
 
-export const ProductPageImagesList: React.FC<Props> = ({
+export const ProductPageImagesCarousel: React.FC<Props> = ({
   images,
   imgMouseOverHandler,
-  featuredImg,
   imgListMouseLeaveHandler,
   fullFeaturedImgIndex,
   imgClickHandler,
@@ -32,7 +30,9 @@ export const ProductPageImagesList: React.FC<Props> = ({
 
   useEffect(() => {
     const copy = images.slice(0);
-    copy.push(copy[0]);
+    for (let i = 0; copy.length < 7; i++) {
+      copy.push(copy[i]);
+    }
     setCurrentImagesList(copy);
   }, [])
 
@@ -129,42 +129,14 @@ export const ProductPageImagesList: React.FC<Props> = ({
       </CarouselButton>
       <ImageListContainer >
         <ImageList data-margin-top={imageListMarginTop} data-should-animate={shouldAnimate} onMouseLeave={() => imgListMouseLeaveHandler(firstUrl)}>
-          <Img
-            src={firstUrl}
-            featured={fullFeaturedImgIndex === 0}
-            onMouseOver={imgMouseOverHandler}
-            onClick={() => imgClickHandler(0, firstUrl)}
-          />
-          <Img
-            src={currentImagesList[1]}
-            featured={fullFeaturedImgIndex === 1}
-            onMouseOver={imgMouseOverHandler}
-            onClick={() => imgClickHandler(1, firstUrl)}
-          />
-          <Img
-            src={currentImagesList[2]}
-            featured={fullFeaturedImgIndex === 2}
-            onMouseOver={imgMouseOverHandler}
-            onClick={() => imgClickHandler(2, firstUrl)}
-          />
-          <Img
-            src={currentImagesList[3]}
-            featured={fullFeaturedImgIndex === 3}
-            onMouseOver={imgMouseOverHandler}
-            onClick={() => imgClickHandler(3, firstUrl)}
-          />
-          <Img
-            src={currentImagesList[4]}
-            featured={fullFeaturedImgIndex === 4}
-            onMouseOver={imgMouseOverHandler}
-            onClick={() => imgClickHandler(4, firstUrl)}
-          />
-          <Img
-            src={currentImagesList[5]}
-            featured={fullFeaturedImgIndex === 5}
-            onMouseOver={imgMouseOverHandler}
-            onClick={() => imgClickHandler(5, firstUrl)}
-          />
+          {currentImagesList.map((image, index) => (
+            <Img
+              src={image}
+              featured={fullFeaturedImgIndex === index}
+              onMouseOver={imgMouseOverHandler}
+              onClick={() => imgClickHandler(index, firstUrl)}
+            />
+          ))}
       </ImageList>
       </ImageListContainer>
       <CarouselButton isHovered={isHovered} onClick={handleDownButtonClick}>

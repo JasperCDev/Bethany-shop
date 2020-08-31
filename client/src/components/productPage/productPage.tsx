@@ -5,9 +5,10 @@ import { match } from 'react-router-dom';
 import { dummyProducts } from '../../../dummyProducts';
 import { MainHeader } from '../mainHeader';
 import { ProductPageMainImg } from './productPageMainImg';
-import { ProductPageImagesList } from './productPageImagesList'
+import { ProductPageImagesCarousel } from './productPageImagesCarousel'
 
 import { ProductPageMain, ProductTitle, Preview, Purchasing, AddToCartButton } from './styles';
+import { ProductImagesList } from './productImagesList';
 
 
 interface Params {
@@ -35,6 +36,7 @@ export const ProductPage: React.FC<Props> = ({ match: {params: { id }} }) => {
 
   const imgClickHandler = (index: number, url: string) => {
     setFullFeaturedImgIndex(index);
+    setFeaturedImg(url);
   }
 
   useEffect(() => {
@@ -46,6 +48,7 @@ export const ProductPage: React.FC<Props> = ({ match: {params: { id }} }) => {
     }
   }, []);
 
+
   if (!product) {
     return <h1>LOADING</h1>
   } else {
@@ -55,25 +58,38 @@ export const ProductPage: React.FC<Props> = ({ match: {params: { id }} }) => {
         <MainHeader />
         <ProductPageMain>
           <Preview>
-            <ProductPageImagesList
-              imgClickHandler={imgClickHandler}
-              imgListMouseLeaveHandler={imgListMouseLeaveHandler}
-              imgMouseOverHandler={imgMouseOverHandler}
-              images={product.images}
-              featuredImg={featuredImg || product.imageMainUrl}
-              fullFeaturedImgIndex={fullFeaturedImgIndex}
-              setFullFeaturedImgIndex={setFullFeaturedImgIndex}
-              setFeaturedImg={setFeaturedImg}
-            />
+            {product.images.length >= 4 ?
+              <ProductPageImagesCarousel
+                imgClickHandler={imgClickHandler}
+                imgListMouseLeaveHandler={imgListMouseLeaveHandler}
+                imgMouseOverHandler={imgMouseOverHandler}
+                images={product.images}
+                fullFeaturedImgIndex={fullFeaturedImgIndex}
+                setFullFeaturedImgIndex={setFullFeaturedImgIndex}
+                setFeaturedImg={setFeaturedImg}
+              /> :
+              <ProductImagesList
+                images={product.images}
+                imgClickHandler={imgClickHandler}
+                imgListMouseLeaveHandler={imgListMouseLeaveHandler}
+                imageMouseOverHandler={imgMouseOverHandler}
+                fullFeaturedImgIndex={fullFeaturedImgIndex}
+              />
+            }
+
             <ProductPageMainImg url={featuredImg || product.imageMainUrl} />
           </Preview>
           <Purchasing>
             <ProductTitle>{product.title}</ProductTitle>
             <h2 style={{ display: 'inline', paddingRight: '5px' }}>
               ${product.price}</h2>
-            <h4 style={{ color: 'gray', display: 'inline' }}>
+            <h4 style={{ color: 'gray', display: 'inline', }}>
               + {product.shipping} shipping
             </h4>
+            <hr style={{ height: '0px', borderColor: 'black', backgroundColor: 'black', margin: '20px 0px', borderWidth: '1px' }}/>
+            <p style={{marginBottom: '20px'}}>
+              {product.description}
+            </p>
             <AddToCartButton>
               Add to Cart
             </AddToCartButton>

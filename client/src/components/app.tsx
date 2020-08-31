@@ -19,7 +19,7 @@ export const App: React.FC = () => {
       <GlobalStyle />
       <MainHeader />
       <ProductList products={products} />
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }

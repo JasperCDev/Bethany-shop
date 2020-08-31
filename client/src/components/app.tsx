@@ -3,11 +3,8 @@ import { MainHeader } from './mainHeader';
 import { ProductList } from './productList';
 import { dummyProducts } from '../../dummyProducts';
 import { Footer } from './footer';
-import { ShoppingCart } from '@material-ui/icons';
 import { Product } from './interfaces';
-import {
-  Header, Title, ShoppingCartButton, GlobalStyle, ShoppingCartLink, ShoppingCartText, Subtitle, AboutLink, AboutButton
-} from './styles';
+import { GlobalStyle } from './styles';
 
 
 export const App: React.FC = () => {

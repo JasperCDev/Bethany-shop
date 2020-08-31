@@ -16,7 +16,7 @@ export const ProductPageMain = styled.div`
 
 export const Preview = styled.div`
   width: 400px;
-  height: 1200px;
+  height: 700px;
   display: flex;
 `;
 

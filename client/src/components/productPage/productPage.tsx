@@ -58,7 +58,7 @@ export const ProductPage: React.FC<Props> = ({ match: {params: { id }} }) => {
         <MainHeader />
         <ProductPageMain>
           <Preview>
-            {product.images.length >= 4 ?
+            {product.images.length > 4 ?
               <ProductPageImagesCarousel
                 imgClickHandler={imgClickHandler}
                 imgListMouseLeaveHandler={imgListMouseLeaveHandler}
@@ -72,7 +72,7 @@ export const ProductPage: React.FC<Props> = ({ match: {params: { id }} }) => {
                 images={product.images}
                 imgClickHandler={imgClickHandler}
                 imgListMouseLeaveHandler={imgListMouseLeaveHandler}
-                imageMouseOverHandler={imgMouseOverHandler}
+                imgMouseOverHandler={imgMouseOverHandler}
                 fullFeaturedImgIndex={fullFeaturedImgIndex}
               />
             }

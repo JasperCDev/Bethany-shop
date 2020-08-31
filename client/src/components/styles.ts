@@ -48,13 +48,18 @@ export const Title = styled.div`
   -webkit-text-fill-color: ${MainTitleColor};
   -webkit-text-stroke-width: 0.07rem;
   -webkit-text-stroke-color: ${BorderColor};
-  transition: all .5s ease-in-out;
+  transition: font-size .5s ease-in-out;
+  transition: -webkit-text-fill-color .5s ease-in-out;
+  transition: letter-spacing .2s ease-in-out;
   /* background: linear-gradient(black, darkred);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; */
   cursor: pointer;
   &:hover {
     -webkit-text-fill-color: black;
+  }
+  &:active {
+    letter-spacing: 5;
   }
 `;
 

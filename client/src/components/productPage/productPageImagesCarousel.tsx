@@ -33,6 +33,7 @@ export const ProductPageImagesCarousel: React.FC<Props> = ({
     for (let i = 0; copy.length < 7; i++) {
       copy.push(copy[i]);
     }
+    console.log(copy);
     setCurrentImagesList(copy);
   }, [])
 
@@ -100,19 +101,19 @@ export const ProductPageImagesCarousel: React.FC<Props> = ({
 
   const formatListForSlideUp = (iterationCount = 1) => {
     const currentImagesListCopy = currentImagesListRef.current.slice(0);
-    currentImagesListCopy.shift();
-    for (let i = 1; i < iterationCount; i++) {
-      let shifted = currentImagesListCopy.shift();
-      currentImagesListCopy.push(shifted!);
+    currentImagesListCopy.splice(0, iterationCount);
+    console.log(currentImagesListCopy);
+    for (let i = iterationCount - 1; i >= 0; i--) {
+      currentImagesListCopy.push(currentImagesListCopy[i]);
     }
-    currentImagesListCopy.push(currentImagesListCopy[0]);
     return currentImagesListCopy;
   }
 
   const formatListForSlideDown = () => {
     const currentImagesListCopy = currentImagesList.slice(0);
+    const newFirstItem = currentImagesListCopy[currentImagesList.length - (images.length - 2)];
     currentImagesListCopy.pop();
-    currentImagesListCopy.unshift(currentImagesListCopy[currentImagesListCopy.length - 2]);
+    currentImagesListCopy.unshift(newFirstItem);
     return currentImagesListCopy;
   }
 

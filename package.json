@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server/compiled/index.js",
     "start-dev": "nodemon server/compiled/index.js",
-    "build": "webpack mode=production",
+    "build": "webpack --mode=production",
     "build-dev": "webpack --watch",
     "test": "jest --watch"
   },

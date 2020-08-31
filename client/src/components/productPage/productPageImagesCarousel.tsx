@@ -30,10 +30,11 @@ export const ProductPageImagesCarousel: React.FC<Props> = ({
 
   useEffect(() => {
     const copy = images.slice(0);
+    console.log(copy.length);
     for (let i = 0; copy.length < 7; i++) {
+      console.log('NOT HERE');
       copy.push(copy[i]);
     }
-    console.log(copy);
     setCurrentImagesList(copy);
   }, [])
 
@@ -100,12 +101,17 @@ export const ProductPageImagesCarousel: React.FC<Props> = ({
   }
 
   const formatListForSlideUp = (iterationCount = 1) => {
+    console.log(iterationCount);
     const currentImagesListCopy = currentImagesListRef.current.slice(0);
     currentImagesListCopy.splice(0, iterationCount);
-    console.log(currentImagesListCopy);
-    for (let i = iterationCount - 1; i >= 0; i--) {
-      currentImagesListCopy.push(currentImagesListCopy[i]);
+    let count = 0;
+    for (let i = iterationCount - 1; i < iterationCount * 2 - 1; i++) {
+      const lastIndex = images.indexOf(currentImagesListCopy[currentImagesListCopy.length - 1]);
+      const newItem = images[lastIndex + 1] || images[0];
+      currentImagesListCopy.push(newItem);
+      count++;
     }
+    console.log('count: ', count);
     return currentImagesListCopy;
   }
 

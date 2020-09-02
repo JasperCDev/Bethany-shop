@@ -75,8 +75,8 @@ export const ShoppingCartButton = styled.button`
   margin: auto;
   margin-right: 15vw;
   font-size: 1em;
-  min-width: 9em;
-  min-height: 2em;
+  min-width: 6vw;
+  min-height: 3vh;
   outline: none;
   border: 0.5px solid ${BorderColor};
   background-color: ${LighterPink};
@@ -138,7 +138,7 @@ export const ProductListDiv = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   padding-top: 3em;
-  width: 40vw;
+  width: 1000px;
   margin: auto;
   overflow: hidden;
   white-space: nowrap;
@@ -149,22 +149,25 @@ export const ProductDiv = styled.div`
   margin: auto;
   overflow: hidden;
   white-space: nowrap;
-  width: 175px;
+  width: 300px;
 `;
 
 export const ProductTitle = styled.h3`
   /* padding-bottom: 0.3rem; */
-  font-size: 0.9rem;
+  font-size: 1.4rem;
 `;
 
 export const ProductImgContainer = styled.div`
   overflow: hidden;
-  width: 150px;
+  width: 247.5px;
+  height: 306px;
   border: 1px solid ${BorderColor};
 `;
 
 export const ProductImg = styled.img`
   transition: transform .2s ease;
+  width: 247.5px;
+  height: 306px;
   &:hover {
     transform: scale(1.5);
     cursor: pointer;
@@ -176,7 +179,7 @@ export const ProductDescription = styled.h3`
   white-space: nowrap;
   text-overflow: ellipsis;
   font-weight: 100;
-  font-size: 0.6rem;
+  font-size: 1rem;
 `;
 
 export const FooterSection = styled.footer`

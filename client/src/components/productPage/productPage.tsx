@@ -83,13 +83,13 @@ export const ProductPage: React.FC<Props> = ({ match: {params: { id }} }) => {
             <ProductTitle>{product.title}</ProductTitle>
             <h2 style={{ display: 'inline', paddingRight: '5px' }}>
               ${product.price}</h2>
-            <h4 style={{ color: 'gray', display: 'inline', }}>
+            <h3 style={{ color: 'gray', display: 'inline', }}>
               + {product.shipping} shipping
-            </h4>
+            </h3>
             <hr style={{ height: '0px', borderColor: 'black', backgroundColor: 'black', margin: '20px 0px', borderWidth: '1px' }}/>
-            <p style={{marginBottom: '20px'}}>
+            <h4 style={{marginBottom: '20px'}}>
               {product.description}
-            </p>
+            </h4>
             <AddToCartButton>
               Add to Cart
             </AddToCartButton>

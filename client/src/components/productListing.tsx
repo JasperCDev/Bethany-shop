@@ -15,7 +15,7 @@ export const ProductListing: React.FC<Props> = ({ product }) => {
         </ProductImgContainer>
         <ProductTitle>{product.title}</ProductTitle>
         <ProductDescription >{product.description}</ProductDescription>
-        <h5>${product.price.toString()}</h5>
+        <h3>${product.price.toString()}</h3>
       </ProductDiv>
     </Link>
 

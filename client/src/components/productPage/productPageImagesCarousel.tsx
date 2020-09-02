@@ -30,9 +30,7 @@ export const ProductPageImagesCarousel: React.FC<Props> = ({
 
   useEffect(() => {
     const copy = images.slice(0);
-    console.log(copy.length);
     for (let i = 0; copy.length < 7; i++) {
-      console.log('NOT HERE');
       copy.push(copy[i]);
     }
     setCurrentImagesList(copy);
@@ -75,7 +73,7 @@ export const ProductPageImagesCarousel: React.FC<Props> = ({
   const slideUp = (iterationCount = 1) => {
     const currentImagesListCopy = formatListForSlideUp(iterationCount);
     setShouldAnimate(true);
-    setImageListMarginTop(-102 * iterationCount);
+    setImageListMarginTop(-153 * iterationCount);
     setTimeout(() => {
       setShouldAnimate(false);
       setImageListMarginTop(0);
@@ -87,7 +85,7 @@ export const ProductPageImagesCarousel: React.FC<Props> = ({
 
   const slideDown = () => {
     setShouldAnimate(false);
-    setImageListMarginTop(-102);
+    setImageListMarginTop(-153);
     const currentImagesListCopy = formatListForSlideDown();
     setCurrentImagesList(currentImagesListCopy);
     requestAnimationFrame(() => {
@@ -101,17 +99,13 @@ export const ProductPageImagesCarousel: React.FC<Props> = ({
   }
 
   const formatListForSlideUp = (iterationCount = 1) => {
-    console.log(iterationCount);
     const currentImagesListCopy = currentImagesListRef.current.slice(0);
     currentImagesListCopy.splice(0, iterationCount);
-    let count = 0;
     for (let i = iterationCount - 1; i < iterationCount * 2 - 1; i++) {
       const lastIndex = images.indexOf(currentImagesListCopy[currentImagesListCopy.length - 1]);
       const newItem = images[lastIndex + 1] || images[0];
       currentImagesListCopy.push(newItem);
-      count++;
     }
-    console.log('count: ', count);
     return currentImagesListCopy;
   }
 

@@ -15,14 +15,14 @@ export const ProductPageMain = styled.div`
 `;
 
 export const Preview = styled.div`
-  width: 400px;
-  height: 700px;
+  width: 600px;
+  height: 1050px;
   display: flex;
 `;
 
 export const Purchasing = styled.div`
-  width: 30vw;
-  height: 408px;
+  width: 600px;
+  height: 1050px;
   margin-left: 4vw;
 `;
 
@@ -51,7 +51,7 @@ export const AddToCartButton = styled.button`
 `;
 
 export const ProductTitle = styled.h1`
-
+  font-size: 400%;
 `;
 
 // Product Page Images List
@@ -59,12 +59,14 @@ export const ProductTitle = styled.h1`
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: -72px;
+  margin-top: -92px;
   align-items: center;
-  height: 628px;
+  height: 942px;
 `;
 
-export const CarouselSVG = styled.svg``;
+export const CarouselSVG = styled.svg`
+  transform: scale(1.5);
+`;
 
 export const CarouselButton = styled.button.attrs((props: {
   isHovered: boolean;
@@ -76,8 +78,8 @@ export const CarouselButton = styled.button.attrs((props: {
 	outline: none;
   font-weight: 500;
   font-size: 2.5rem;
-  height: 2.5rem;
-  width: 2.5rem;
+  height: 60px;
+  width: 60px;
   line-height: 2.5rem;
   opacity: ${({ isHovered }) => isHovered ? '1' : '0'};
   transition: all .25s ease-in-out;
@@ -98,7 +100,7 @@ export const CarouselButton = styled.button.attrs((props: {
 
 
 export const ImageListContainer = styled.div`
-  height: 408px;
+  height: 612px;
   overflow: hidden;
   display: flex;
   align-items: flex-start;
@@ -113,7 +115,7 @@ export const ImageList = styled.div.attrs((props) => {})`
   justify-content: top;
   flex-direction: column;
   padding: 0px 10px;
-  height: 800px;
+  height: 1200px;
   overflow: hidden;
   /* position: relative; */
   margin-top: ${(props) => props['data-margin-top'] + 'px'};
@@ -126,8 +128,8 @@ export const Img = styled.img.attrs((props: {
   'data-translate-px': number;
 }) => { })`
   margin: 10px 0px;
-  width: ${({ featured }) => featured ? '61px' : '59px'};
-  height: ${({ featured }) => featured ? '84px' : '82px'};
+  width: ${({ featured }) => featured ? '90.5px' : '88.5px'};
+  height: ${({ featured }) => featured ? '135px' : '133px'};
   cursor: pointer;
   border: ${({ featured }) => featured ? '1px solid ' + BorderColor : 'none'};
   /* position: relative; */
@@ -137,20 +139,20 @@ export const Img = styled.img.attrs((props: {
 
 export const OverflowContainer = styled.div`
   overflow: hidden;
-  width: 330px;
-  height: 408px;
+  width: 510px;
+  height: 612px;
 `;
 
 export const ImgContainer = styled.div.attrs((props) => {
 })`
   background-repeat: no-repeat;
-  width: 340px;
-  height: 408px;
+  width: 510px;
+  height: 612px;
   background-image: ${(props) => 'url(' + props['data-url'] + ')'};
   background-size: contain;
   cursor: pointer;
-  background-position-x: ${(props) => (props['data-x-position'] && props['data-x-position'] - (378 / 2)) + 'px'};
-  background-position-y: ${(props) => (props['data-x-position'] && props['data-y-position'] - (415 / 2)) + 'px'};
+  background-position-x: ${(props) => (props['data-x-position'] && props['data-x-position'] - (510 / 2)) + 'px'};
+  background-position-y: ${(props) => (props['data-x-position'] && props['data-y-position'] - (612 / 2)) + 'px'};
   transition: background-image .3s ease-in;
   &:hover {
     transform: scale(2);

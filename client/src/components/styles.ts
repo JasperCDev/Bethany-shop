@@ -30,10 +30,15 @@ export const Header = styled.div`
   height: 9vh;
   border-bottom: 1px solid ${BorderColor};
   display: flex;
+  position: sticky;
+  top: 0;
   justify-content: flex-start;
   align-items: left;
   flex-direction: row;
   overflow: hidden;
+  /* @media (orientation: portrait) {
+    height: 7vh;
+  } */
 `;
 
 export const Title = styled.div`
@@ -50,16 +55,15 @@ export const Title = styled.div`
   -webkit-text-stroke-color: ${BorderColor};
   transition: font-size .5s ease-in-out;
   transition: -webkit-text-fill-color .5s ease-in-out;
-  transition: letter-spacing .2s ease-in-out;
-  /* background: linear-gradient(black, darkred);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; */
   cursor: pointer;
   &:hover {
     -webkit-text-fill-color: black;
   }
   &:active {
     letter-spacing: 5;
+  }
+  @media (orientation: portrait) {
+    font-size: 4vh;
   }
 `;
 
@@ -69,14 +73,17 @@ export const Subtitle = styled.div`
   font-style: italic;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   padding-left: 20px;
+  @media (orientation: portrait) {
+    font-size: 1.5vh;
+  }
 `;
 
 export const ShoppingCartButton = styled.button`
   margin: auto;
   margin-right: 15vw;
-  font-size: 1em;
-  min-width: 6vw;
-  min-height: 3vh;
+  font-size: 1.5em;
+  width: 8vw;
+  height: 4vh;
   outline: none;
   border: 0.5px solid ${BorderColor};
   background-color: ${LighterPink};
@@ -91,6 +98,10 @@ export const ShoppingCartButton = styled.button`
     background-color: ${DarkPink};
     color: ${LighterPink};
     letter-spacing: 1.2;
+  }
+  @media (orientation: portrait) {
+    margin: auto;
+    width: 12vw;
   }
 `;
 
@@ -138,10 +149,14 @@ export const ProductListDiv = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   padding-top: 3em;
-  width: 1000px;
+  width: 900px;
   margin: auto;
   overflow: hidden;
   white-space: nowrap;
+  @media (orientation: portrait) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const ProductDiv = styled.div`
@@ -149,44 +164,82 @@ export const ProductDiv = styled.div`
   margin: auto;
   overflow: hidden;
   white-space: nowrap;
-  width: 300px;
+  width: 200px;
+
+  @media (orientation: portrait) {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    width: 90%;
+    padding: auto;
+
+  }
 `;
 
-export const ProductTitle = styled.h3`
-  /* padding-bottom: 0.3rem; */
-  font-size: 1.4rem;
-`;
+
 
 export const ProductImgContainer = styled.div`
   overflow: hidden;
-  width: 247.5px;
-  height: 306px;
-  border: 1px solid ${BorderColor};
+  width: 186px;
+  height: 230px;
+  border: 0.5px solid ${BorderColor};
 `;
 
 export const ProductImg = styled.img`
   transition: transform .2s ease;
-  width: 247.5px;
-  height: 306px;
+  width: 186px;
+  height: 230px;
   &:hover {
     transform: scale(1.5);
     cursor: pointer;
   }
 `;
 
-export const ProductDescription = styled.h3`
+export const ProductInfoDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  @media (orientation: portrait) {
+    margin-left: 5vw;
+  }
+`;
+
+export const ProductTitle = styled.h3`
+
+  font-size: 1rem;
+  @media (orientation: portrait) {
+    font-size: 2.5rem;
+    padding-bottom: 1rem;
+  }
+`;
+
+export const ProductDescription = styled.div`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   font-weight: 100;
   font-size: 1rem;
+  width: 500px;
+  max-height: 115px;
+  @media (orientation: portrait) {
+    font-size: 1.4rem;
+    font-size: 2rem;
+    white-space: pre-line;
+    padding-bottom: 1rem;
+  }
 `;
 
-export const FooterSection = styled.footer`
-  display: flex;
-  flex-direction: row;
-  background-color: #bbeafa;
-  padding: 20px;
-  border-top: 1px solid ${BorderColor};
+
+export const ProductPrice = styled.h1`
+font-size: 1.5rem;
+  @media (orientation: portrait) {
+    font-size: 2.3rem;
+  }
 `;
 
+// export const FooterSection = styled.footer`
+//   display: flex;
+//   flex-direction: row;
+//   background-color: #bbeafa;
+//   padding: 20px;
+//   border-top: 1px solid ${BorderColor};
+// `;

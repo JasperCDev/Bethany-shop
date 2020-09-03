@@ -87,7 +87,7 @@ export const ShoppingCartButton = styled.button`
   outline: none;
   border: 0.5px solid ${BorderColor};
   background-color: ${LighterPink};
-  transition: all .3s ease-in-out;
+  transition: color .3s ease-in-out, background-color .3s ease-in-out, transform .3s ease-in-out;
   color: ${DarkGrey};
   &:hover {
     background-color: ${MainPink};
@@ -116,33 +116,34 @@ export const ShoppingCartLink = styled.div`
 
 export const ShoppingCartText = styled.p`
   padding-right: 1em;
+  align-self: center;
 `;
 
-export const AboutButton = styled.button`
-  margin: auto;
-  font-size: 1em;
-  width: 9em;
-  height: 2em;
-  outline: none;
-  border: 0.5px solid ${BorderColor};
-  background-color: ${LighterPink};
-  transition: all .3s ease-in-out;
-  color: ${DarkGrey};
-  &:hover {
-    background-color: ${MainPink};
-    transform: scale(1.2);
-  }
+// export const AboutButton = styled.button`
+//   margin: auto;
+//   font-size: 1em;
+//   width: 9em;
+//   height: 2em;
+//   outline: none;
+//   border: 0.5px solid ${BorderColor};
+//   background-color: ${LighterPink};
+//   transition: all .3s ease-in-out;
+//   color: ${DarkGrey};
+//   &:hover {
+//     background-color: ${MainPink};
+//     transform: scale(1.2);
+//   }
 
-  &:active {
-    background-color: ${DarkPink};
-    color: ${LighterPink};
-    letter-spacing: 1.2;
-  }
-`;
+//   &:active {
+//     background-color: ${DarkPink};
+//     color: ${LighterPink};
+//     letter-spacing: 1.2;
+//   }
+// `;
 
-export const AboutLink = styled.div`
-   margin: auto;
-`;
+// export const AboutLink = styled.div`
+//    margin: auto;
+// `;
 
 export const ProductListDiv = styled.div`
   display: grid;
@@ -172,11 +173,8 @@ export const ProductDiv = styled.div`
     margin: auto;
     width: 90%;
     padding: auto;
-
   }
 `;
-
-
 
 export const ProductImgContainer = styled.div`
   overflow: hidden;
@@ -204,7 +202,6 @@ export const ProductInfoDiv = styled.div`
 `;
 
 export const ProductTitle = styled.h3`
-
   font-size: 1rem;
   @media (orientation: portrait) {
     font-size: 2.5rem;

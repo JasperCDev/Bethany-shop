@@ -53,14 +53,10 @@ export const Title = styled.div`
   -webkit-text-fill-color: ${MainTitleColor};
   -webkit-text-stroke-width: 0.07rem;
   -webkit-text-stroke-color: ${BorderColor};
-  transition: font-size .5s ease-in-out;
   transition: -webkit-text-fill-color .5s ease-in-out;
   cursor: pointer;
   &:hover {
     -webkit-text-fill-color: black;
-  }
-  &:active {
-    letter-spacing: 5;
   }
   @media (orientation: portrait) {
     font-size: 4vh;
@@ -107,7 +103,7 @@ export const ShoppingCartButton = styled.button`
 
 export const ShoppingCartLink = styled.div`
   margin: auto;
-  padding: 0.5em;
+  /* padding: 0.5em; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -166,7 +162,7 @@ export const ProductDiv = styled.div`
   overflow: hidden;
   white-space: nowrap;
   width: 200px;
-
+  text-overflow: ellipsis;
   @media (orientation: portrait) {
     display: flex;
     flex-direction: row;
@@ -196,8 +192,11 @@ export const ProductImg = styled.img`
 export const ProductInfoDiv = styled.div`
   display: flex;
   flex-direction: column;
+
   @media (orientation: portrait) {
+    width: 80%;
     margin-left: 5vw;
+    padding-bottom: 1rem;
   }
 `;
 
@@ -211,17 +210,36 @@ export const ProductTitle = styled.h3`
 
 export const ProductDescription = styled.div`
   overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  /* white-space: pre-line;
+  text-overflow: ellipsis; */
   font-weight: 100;
-  font-size: 1rem;
-  width: 500px;
-  max-height: 115px;
+  font-size: 16px;
+  width: 100%;
+  height: 36px;
+
   @media (orientation: portrait) {
     font-size: 1.4rem;
     font-size: 2rem;
     white-space: pre-line;
     padding-bottom: 1rem;
+    height: 115px;
+  }
+`;
+
+export const ProductDescriptionP = styled.p`
+  /* white-space: nowrap;
+  /* text-overflow: ellipsis; */
+  width: 300px;
+  height: 36px;
+  white-space: pre-wrap;
+  @media (orientation: portrait) {
+    font-size: 1.4rem;
+    font-size: 2rem;
+    white-space: pre-line;
+    padding-bottom: 1rem;
+    height: 115px;
+    width: 90%;
+    margin: 0;
   }
 `;
 

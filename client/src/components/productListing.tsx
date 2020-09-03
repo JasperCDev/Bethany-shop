@@ -1,6 +1,6 @@
 import React from 'react';
 import { Product } from './interfaces';
-import { ProductDiv, ProductImg, ProductImgContainer, ProductDescription, ProductTitle, ProductInfoDiv, ProductPrice } from './styles';
+import { ProductDiv, ProductImg, ProductImgContainer, ProductDescription, ProductTitle, ProductInfoDiv, ProductPrice, ProductDescriptionP } from './styles';
 import { Link } from 'react-router-dom';
 interface Props {
   product: Product;
@@ -15,11 +15,12 @@ export const ProductListing: React.FC<Props> = ({ product }) => {
         </ProductImgContainer>
         <ProductInfoDiv>
           <ProductTitle>{product.title}</ProductTitle>
-          <ProductDescription >{product.description}</ProductDescription>
+          <ProductDescription>
+            <ProductDescriptionP>{product.description}</ProductDescriptionP>
+          </ProductDescription>
           <ProductPrice>${product.price.toString()}</ProductPrice>
         </ProductInfoDiv>
       </ProductDiv>
     </Link>
-
   );
 }

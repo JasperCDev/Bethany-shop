@@ -3,7 +3,6 @@ import { OverflowContainer, ImgContainer } from './styles';
 
 interface Props {
   url: string;
-
 }
 
 
@@ -12,17 +11,14 @@ export const ProductPageMainImg: React.FC<Props> = ({ url }) => {
   const [YPosition, setYPosition] = useState<number>(0);
 
   const animateOnMouseMove: MouseEventHandler = (e) => {
-    let animationCount = 0;
     let animationStart = Date.now();
     return (event: typeof e) => {
-      animationCount++;
       let newAnimationStart = Date.now();
       let timeSinceLastAnimation = newAnimationStart - animationStart;
-      if (animationCount % 5 === 0 || timeSinceLastAnimation >= 5) {
+      if (timeSinceLastAnimation >= 10) {
         setXPosition(event.nativeEvent.offsetX);
         setYPosition(event.nativeEvent.offsetY);
         animationStart = newAnimationStart;
-        animationCount = 0;
       }
     }
   };

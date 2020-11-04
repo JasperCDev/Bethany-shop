@@ -192,7 +192,7 @@ export const ProductImg = styled.img`
 export const ProductInfoDiv = styled.div`
   display: flex;
   flex-direction: column;
-
+  white-space: pre-line;
   @media (orientation: portrait) {
     width: 80%;
     margin-left: 5vw;
@@ -210,8 +210,8 @@ export const ProductTitle = styled.h3`
 
 export const ProductDescription = styled.div`
   overflow: hidden;
-  /* white-space: pre-line;
-  text-overflow: ellipsis; */
+
+  text-overflow: ellipsis;
   font-weight: 100;
   font-size: 16px;
   width: 100%;

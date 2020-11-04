@@ -34,7 +34,7 @@ export const ProductPageImagesCarousel: React.FC<Props> = ({
       copy.push(copy[i]);
     }
     setCurrentImagesList(copy);
-  }, [])
+  }, []);
 
   useEffect(() => {
     if (fullFeaturedImgIndex !== 0) slideUp(fullFeaturedImgIndex);
@@ -47,8 +47,10 @@ export const ProductPageImagesCarousel: React.FC<Props> = ({
   const handleSlideUpAnimation = () => {
     let lastClickStartTime = Date.now();
     return () => {
+      console.log('clicked');
       const now = Date.now();
       const timeSincelastAnimation = now - lastClickStartTime;
+      console.log(timeSincelastAnimation);
       if (timeSincelastAnimation < 150) {
         return;
       };
@@ -114,7 +116,7 @@ export const ProductPageImagesCarousel: React.FC<Props> = ({
     const newFirstItem = currentImagesListCopy[currentImagesList.length - (images.length - 2)];
     currentImagesListCopy.pop();
     currentImagesListCopy.unshift(newFirstItem);
-    return currentImagesListCopy;
+     return currentImagesListCopy;
   }
 
   const handleUpButtonClick = handleSlideDownAnimation();

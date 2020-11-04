@@ -97,8 +97,6 @@ export const CarouselButton = styled.button.attrs((props: {
   }
 `;
 
-
-
 export const ImageListContainer = styled.div`
   height: 612px;
   overflow: hidden;
@@ -128,8 +126,8 @@ export const Img = styled.img.attrs((props: {
   'data-translate-px': number;
 }) => { })`
   margin: 10px 0px;
-  width: ${({ featured }) => featured ? '90.5px' : '88.5px'};
-  height: ${({ featured }) => featured ? '135px' : '133px'};
+  max-width: ${({ featured }) => featured ? '90.5px' : '88.5px'};
+  max-height: ${({ featured }) => featured ? '135px' : '133px'};
   cursor: pointer;
   border: ${({ featured }) => featured ? '1px solid ' + BorderColor : 'none'};
   /* position: relative; */

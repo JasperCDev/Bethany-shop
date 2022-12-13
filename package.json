@@ -52,7 +52,7 @@
     "@material-ui/icons": "^4.9.1",
     "@types/react-router-dom": "^5.1.5",
     "@types/styled-components": "^5.1.2",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "react-router-dom": "^5.2.0",
     "styled-components": "^5.1.1",
     "typescript": "^3.9.7"
